@@ -20,7 +20,7 @@
  */
 
 // Configuration parameters
-var fileName = './sfiles/s';
+var fileName = './sequential/s';
 
 // The fs module which is required to read files
 var fs = require('fs');

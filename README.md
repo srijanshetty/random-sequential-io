@@ -1,22 +1,16 @@
-### sGenerate.sh
+### generateFile.sh
 
-- Generate binary files with random data in the directory ./sfiles/ of size 2K.
-
-```shell
-$ ./sGenerate.sh
-```
-
-### rGenerate.sh
-
-- Generate binary files with random data in the directory ./rfiles/ of size 64K.
+- This file creates 100 files of size 2K and 100 files of size 64K
+- Files of size 2K denote a random I/O access.
+- Files of size 64K denote a sequential I/O access.
 
 ```shell
-$ ./rGenerate.sh
+$ ./generateFiles.sh
 ```
 
 ### read.js
 
-- Read a random file from the directory mentioned in it's config
+- Read a random file from the provided directory.
 
 ```shell
 $ node read.js
