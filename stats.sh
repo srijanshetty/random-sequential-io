@@ -30,10 +30,9 @@ MIN=$(sort -n "$2" | head -1)
 echo "Min : $MIN"
 
 # Compute average
-AVG=$(awk 'BEGIN {count=0} {count+=$0} END {print count/$NF}' "$2")
+AVG=$(awk 'BEGIN {count=0} {count+=$0} END {print count/100}' "$2")
 echo "Avg : $AVG"
-export AVG
 
 # Standard deviation
-STD=$(awk -v AVG="$AVG" 'BEGIN {sum=0} {sum=($0-AVG)^2} END {print sqrt(sum/$NF)}' "$2")
+STD=$(awk -v AVG="$AVG" 'BEGIN {sum=0} {sum=($0-AVG)^2} END {print sqrt(sum/100)}' "$2")
 echo "Std : $STD"
