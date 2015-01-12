@@ -19,11 +19,8 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-// Sanity check
-if (!process.argv[2]) {
-    console.log('Directory not specified');
-    process.exit(1);
-}
+// Configuration parameters
+var fileName = './sfiles/s';
 
 // The fs module which is required to read files
 var fs = require('fs');
@@ -42,7 +39,7 @@ var t1, t2;
 // Start recording
 t1 = microtime.now();
 randomFileIndex = getRandomInt(0, 100);
-fileContent = fs.readFileSync(process.argv[2] + randomFileIndex);
+fileContent = fs.readFileSync(fileName + randomFileIndex);
 t2 = microtime.now();
 
 // Print the time
