@@ -17,9 +17,7 @@ if [ -f "$2" ]; then
 fi
 
 # Check if the outputfile exists or not
-for i in {1..100}; do
-    node "$1" >> "$2"
-done
+node "$1" >> "$2"
 
 # Compute the maximum
 MAX=$(sort -nr "$2" | head -1)

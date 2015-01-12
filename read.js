@@ -20,27 +20,41 @@
  */
 
 // Configuration parameters
-var fileName = './sequential/s';
+var filePrefix = './random/r';
 
 // The fs module which is required to read files
 var fs = require('fs');
 var microtime = require('microtime');
 
-// Helper functions
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+// Add a shuffle method to array
+Array.prototype.shuffle = function (){
+    var i = this.length, j, temp;
+    if ( i === 0 ) {
+        return;
+    }
 
-// Definations
-var fileContent;
-var randomFileIndex;
-var t1, t2;
+    while ( --i ) {
+        j = Math.floor( Math.random() * ( i + 1 ) );
+        temp = this[i];
+        this[i] = this[j];
+        this[j] = temp;
+    }
+};
+
+// Generate a randomly sorted array
+var i;
+var list = [];
+for (i = 0; i < 1000; ++i) {
+    list.push(i);
+}
+list.shuffle();
 
 // Start recording
-t1 = microtime.now();
-randomFileIndex = getRandomInt(0, 100);
-fileContent = fs.readFileSync(fileName + randomFileIndex);
-t2 = microtime.now();
+list.forEach(function(value) {
+    var t1 = microtime.now();
+    fs.readFileSync(filePrefix + value);
+    var t2 = microtime.now();
 
-// Print the time
-console.log(t2 - t1);
+    // Print the time
+    console.log(t2 - t1);
+});
