@@ -35,12 +35,16 @@ var list = helper.getRandomizedArray();
 // Start recording
 list.forEach(function(value, index) {
     // Below threshold, we access the random files
-    var t1 = microtime.now();
+    var FILE_PREFIX;
     if (index < THRESHOLD) {
-        fs.readFileSync(RANDOM_PREFIX + value);
+        FILE_PREFIX = RANDOM_PREFIX;
     } else {
-        fs.readFileSync(SEQUENTIAL_PREFIX + value);
+        FILE_PREFIX = SEQUENTIAL_PREFIX;
     }
+
+    // Time the operation
+    var t1 = microtime.now();
+    fs.readFileSync(FILE_PREFIX + value);
     var t2 = microtime.now();
 
     // Print the time
