@@ -19,12 +19,6 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-module.exports.RANDOM_PREFIX = './random/r';
-module.exports.SEQUENTIAL_PREFIX = './sequential/s';
-module.exports.FILE_PREFIX = module.exports.RANDOM_PREFIX;
-module.exports.ITERATIONS = 1000;
-module.exports.THRESHOLD = 100;
-
 // Add a shuffle method to array
 Array.prototype.shuffle = function (){
     var i = this.length, j, temp;
@@ -38,4 +32,25 @@ Array.prototype.shuffle = function (){
         this[i] = this[j];
         this[j] = temp;
     }
+};
+
+// Settings
+module.exports.RANDOM_PREFIX = './random/r';
+module.exports.SEQUENTIAL_PREFIX = './sequential/s';
+module.exports.FILE_PREFIX = module.exports.RANDOM_PREFIX;
+module.exports.ITERATIONS = 1000;
+module.exports.THRESHOLD = 100;
+
+// Generate a random array
+module.exports.getRandomizedArray = function (range) {
+    // Default value for number of iterations
+    var _range = range || module.exports.ITERATIONS;
+
+    var list = [];
+    for (var i = 0; i < _range; ++i) {
+        list.push(i);
+    }
+    list.shuffle();
+
+    return list;
 };

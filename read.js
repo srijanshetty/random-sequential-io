@@ -26,14 +26,9 @@ var microtime = require('microtime');
 // Configuration parameters
 var helper = require('./helper');
 const FILE_PREFIX = helper.FILE_PREFIX;
-const ITERATIONS = helper.ITERATIONS;
 
 // Generate a randomly sorted array
-var list = [];
-for (var i = 0; i < ITERATIONS; ++i) {
-    list.push(i);
-}
-list.shuffle();
+var list = helper.getRandomizedArray();
 
 // Start recording
 list.forEach(function(value) {

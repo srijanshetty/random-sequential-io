@@ -26,14 +26,9 @@ var microtime = require('microtime');
 // Configuration parameters
 var helper = require('./helper');
 const FILE_PREFIX = helper.FILE_PREFIX;
-const ITERATIONS = helper.ITERATIONS;
 
 // The access pattern of files
-var fileList = [];
-for (var index = 0; index < ITERATIONS; ++index) {
-    fileList.push(index);
-}
-fileList.shuffle();
+var fileList = helper.getRandomizedArray();
 
 // Start recording
 fileList.forEach(function(value) {
@@ -42,11 +37,7 @@ fileList.forEach(function(value) {
     var fileLength = buffer.length;
 
     // The access pattern of bytes
-    var list = [];
-    for (var i = 0; i < fileLength; ++i) {
-        list.push(i);
-    }
-    list.shuffle();
+    var byteAccess = helper.getRandomizedArray(fileLength);
 
     // Overwrite the bytes
     for (i = 0; i < fileLength/2; ++i) {

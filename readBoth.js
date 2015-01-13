@@ -25,17 +25,12 @@ var microtime = require('microtime');
 
 // Configuration parameters
 var helper = require('./helper');
-const ITERATIONS = helper.ITERATIONS;
 const THRESHOLD = helper.THRESHOLD;
 const RANDOM_PREFIX = helper.RANDOM_PREFIX;
 const SEQUENTIAL_PREFIX = helper.SEQUENTIAL_PREFIX;
 
 // Generate a randomly sorted array
-var list = [];
-for (var i = 0; i < ITERATIONS; ++i) {
-    list.push(i);
-}
-list.shuffle();
+var list = helper.getRandomizedArray();
 
 // Start recording
 list.forEach(function(value, index) {
