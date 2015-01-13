@@ -16,11 +16,25 @@ $ ./generateFiles.sh
 $ node read.js
 ```
 
+### overwrite.js
+
+- Randomly overwrite 50% bits in a file and then write it back to disk;
+
+```shell
+$ node overwrite.js
+```
+
 ### stats.sh
 
 - Compute min, max, avg and std for a given script which outputs a number
 
 ```shell
 $ ./stats.sh read.js s.out
+```
+
+- The *-f* in the end provides formatted output.
+
+```shell
+$ ./stats.sh read.js r.out -f
 ```
 
