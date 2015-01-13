@@ -6,26 +6,22 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-# Check if the output file is provided
-if [ -z "$2" ]; then
-    echo "Output file missing" 1>&2
-    exit 1
-fi
+SUFFIX=$(date '+%S_%M_%H_%d')
+OUTFILE="./results/${1}_${SUFFIX}"
 
-if [ -f "$2" ]; then
-    rm "$2"
-fi
+# Create the result folder if it does not exist
+[ ! -d "./results" ] && mkdir results
 
 # Check if the outputfile exists or not
-node "$1" >> "$2"
+node "$1" >> "$OUTFILE"
 
 # Compute the maximum
-MAX=$(sort -nr "$2" | head -1)
-MIN=$(sort -n "$2" | head -1)
-AVG=$(awk 'BEGIN {count=0} {count+=$0} END {print count/100}' "$2")
-STD=$(awk -v AVG="$AVG" 'BEGIN {sum=0} {sum=($0-AVG)^2} END {print sqrt(sum/100)}' "$2")
+MAX=$(sort -nr "$OUTFILE" | head -1)
+MIN=$(sort -n "$OUTFILE" | head -1)
+AVG=$(awk 'BEGIN {count=0} {count+=$0} END {print count/100}' "$OUTFILE")
+STD=$(awk -v AVG="$AVG" 'BEGIN {sum=0} {sum=($0-AVG)^2} END {print sqrt(sum/100)}' "$OUTFILE")
 
-case "$3" in
+case "$2" in
     -f)
         # Formatted output
         echo "Max : $MAX"
