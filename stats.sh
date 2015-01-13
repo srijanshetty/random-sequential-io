@@ -6,13 +6,6 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-# Delete the tmp file
-if [ -e tmp ]; then
-    rm -rf tmp && mkdir tmp
-else
-    mkdir tmp
-fi
-
 SUFFIX=$(date '+%S_%M_%H_%d')
 OUTFILE="./results/${1}_${SUFFIX}"
 

@@ -1,3 +1,7 @@
+# TODO
+
+- writeFile also delets, so add a temp directory
+
 ### generateFile.sh
 
 - This file creates 100 files of size 2K and 100 files of size 64K
@@ -29,12 +33,11 @@ $ node overwrite.js
 - Compute min, max, avg and std for a given script which outputs a number
 
 ```shell
-$ ./stats.sh read.js s.out
+$ ./stats.sh read.js
 ```
 
 - The *-f* in the end provides formatted output.
 
 ```shell
-$ ./stats.sh read.js r.out -f
+$ ./stats.sh read.js -f
 ```
-

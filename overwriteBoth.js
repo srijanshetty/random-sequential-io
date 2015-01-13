@@ -56,7 +56,7 @@ fileList.forEach(function(value, index) {
 
     // Time the write operation
     var t1 = microtime.now();
-    fs.writeFileSync('tmp/t' + value, buffer);
+    fs.writeFileSync(FILE_PREFIX + value, buffer);
     var t2 = microtime.now();
 
     // Print the time
