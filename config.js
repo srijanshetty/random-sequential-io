@@ -19,43 +19,5 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-// The fs module which is required to read files
-var fs = require('fs');
-var microtime = require('microtime');
-
-// Configuration parameters
-var settings = require('./config');
-const FILE_PREFIX = settings.FILE_PREFIX;
-const ITERATIONS = settings.ITERATIONS;
-
-// Add a shuffle method to array
-Array.prototype.shuffle = function (){
-    var i = this.length, j, temp;
-    if ( i === 0 ) {
-        return;
-    }
-
-    while ( --i ) {
-        j = Math.floor( Math.random() * ( i + 1 ) );
-        temp = this[i];
-        this[i] = this[j];
-        this[j] = temp;
-    }
-};
-
-// Generate a randomly sorted array
-var list = [];
-for (var i = 0; i < ITERATIONS; ++i) {
-    list.push(i);
-}
-list.shuffle();
-
-// Start recording
-list.forEach(function(value) {
-    var t1 = microtime.now();
-    fs.readFileSync(FILE_PREFIX + value);
-    var t2 = microtime.now();
-
-    // Print the time
-    console.log(t2 - t1);
-});
+module.exports.FILE_PREFIX = './random/r';
+module.exports.ITERATIONS = 1000;

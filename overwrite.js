@@ -19,13 +19,14 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-// Configuration parameters
-const FILE_PREFIX = './random/r';
-const ITERATIONS = 1000;
-
 // The fs module which is required to read files
 var fs = require('fs');
 var microtime = require('microtime');
+
+// Configuration parameters
+var settings = require('./config');
+const FILE_PREFIX = settings.FILE_PREFIX;
+const ITERATIONS = settings.ITERATIONS;
 
 // Add a shuffle method to array
 Array.prototype.shuffle = function (){
