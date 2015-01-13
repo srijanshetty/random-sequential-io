@@ -24,24 +24,9 @@ var fs = require('fs');
 var microtime = require('microtime');
 
 // Configuration parameters
-var settings = require('./config');
-const FILE_PREFIX = settings.FILE_PREFIX;
-const ITERATIONS = settings.ITERATIONS;
-
-// Add a shuffle method to array
-Array.prototype.shuffle = function (){
-    var i = this.length, j, temp;
-    if ( i === 0 ) {
-        return;
-    }
-
-    while ( --i ) {
-        j = Math.floor( Math.random() * ( i + 1 ) );
-        temp = this[i];
-        this[i] = this[j];
-        this[j] = temp;
-    }
-};
+var helper = require('./helper');
+const FILE_PREFIX = helper.FILE_PREFIX;
+const ITERATIONS = helper.ITERATIONS;
 
 // Generate a randomly sorted array
 var list = [];

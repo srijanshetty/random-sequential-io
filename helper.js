@@ -21,3 +21,19 @@
 
 module.exports.FILE_PREFIX = './random/r';
 module.exports.ITERATIONS = 1000;
+module.exports.PERCENTAGE = 0.1;
+
+// Add a shuffle method to array
+Array.prototype.shuffle = function (){
+    var i = this.length, j, temp;
+    if ( i === 0 ) {
+        return;
+    }
+
+    while ( --i ) {
+        j = Math.floor( Math.random() * ( i + 1 ) );
+        temp = this[i];
+        this[i] = this[j];
+        this[j] = temp;
+    }
+};
