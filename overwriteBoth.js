@@ -51,12 +51,12 @@ fileList.forEach(function(value, index) {
 
     // Overwrite the bytes
     for (var i = 0; i < fileLength/2; ++i) {
-        buffer[list[i]] = ~buffer[];
+        buffer[list[i]] = ~buffer[list[i]];
     }
 
     // Time the write operation
     var t1 = microtime.now();
-    fs.writeFileSync(FILE_PREFIX + value, buffer);
+    fs.writeFileSync('tmp/t' + value, buffer);
     var t2 = microtime.now();
 
     // Print the time

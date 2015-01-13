@@ -45,7 +45,12 @@ fileList.forEach(function(value) {
     }
 
     var t1 = microtime.now();
-    fs.writeFileSync(FILE_PREFIX + value, buffer);
+    // tmp/ files don't exist so this is a pure write
+    fs.writeFileSync('tmp/t' + value, buffer);
+
+    // First file is flushed and then written on
+    // fs.writeFileSync(FILE_PREFIX + value, buffer);
+
     var t2 = microtime.now();
 
     // Print the time
