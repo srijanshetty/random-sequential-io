@@ -20,7 +20,8 @@
  */
 
 // Configuration parameters
-var filePrefix = './random/r';
+const FILE_PREFIX = './random/r';
+const ITERATIONS = 1000;
 
 // The fs module which is required to read files
 var fs = require('fs');
@@ -42,9 +43,8 @@ Array.prototype.shuffle = function (){
 };
 
 // Generate a randomly sorted array
-var i;
 var list = [];
-for (i = 0; i < 1000; ++i) {
+for (var i = 0; i < ITERATIONS; ++i) {
     list.push(i);
 }
 list.shuffle();
@@ -52,7 +52,7 @@ list.shuffle();
 // Start recording
 list.forEach(function(value) {
     var t1 = microtime.now();
-    fs.readFileSync(filePrefix + value);
+    fs.readFileSync(FILE_PREFIX + value);
     var t2 = microtime.now();
 
     // Print the time
