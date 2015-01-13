@@ -42,6 +42,7 @@ fileList.forEach(function(value, index) {
         FILE_PREFIX = SEQUENTIAL_PREFIX;
     }
 
+    var t1 = microtime.now();
     // Read the file buffer
     var buffer = fs.readFileSync(FILE_PREFIX + value);
     var fileLength = buffer.length;
@@ -55,7 +56,6 @@ fileList.forEach(function(value, index) {
     }
 
     // Time the write operation
-    var t1 = microtime.now();
     fs.writeFileSync(FILE_PREFIX + value, buffer);
     var t2 = microtime.now();
 

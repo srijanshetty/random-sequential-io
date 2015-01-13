@@ -32,6 +32,8 @@ var fileList = helper.getRandomizedArray();
 
 // Start recording
 fileList.forEach(function(value) {
+    var t1 = microtime.now();
+
     // Read the file buffer
     var buffer = fs.readFileSync(FILE_PREFIX + value);
     var fileLength = buffer.length;
@@ -44,7 +46,6 @@ fileList.forEach(function(value) {
         buffer[byteAccess[i]] = ~buffer[byteAccess[i]];
     }
 
-    var t1 = microtime.now();
     fs.writeFileSync(FILE_PREFIX + value, buffer);
     var t2 = microtime.now();
 
