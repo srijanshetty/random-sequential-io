@@ -21,16 +21,20 @@ node "$1" >> "$2"
 
 # Compute the maximum
 MAX=$(sort -nr "$2" | head -1)
-echo "Max : $MAX"
-
-# Compute minimum
 MIN=$(sort -n "$2" | head -1)
-echo "Min : $MIN"
-
-# Compute average
 AVG=$(awk 'BEGIN {count=0} {count+=$0} END {print count/100}' "$2")
-echo "Avg : $AVG"
-
-# Standard deviation
 STD=$(awk -v AVG="$AVG" 'BEGIN {sum=0} {sum=($0-AVG)^2} END {print sqrt(sum/100)}' "$2")
-echo "Std : $STD"
+
+case "$3" in
+    -f)
+        # Formatted output
+        echo "Max : $MAX"
+        echo "Min : $MIN"
+        echo "Avg : $AVG"
+        echo "Std : $STD"
+        ;;
+    *)
+        # Row output
+        echo "$MAX $MIN $AVG $STD"
+        ;;
+esac
