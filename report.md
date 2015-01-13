@@ -17,45 +17,45 @@ Disk Sector Size:      4K
 
 # Disk IO
 
-## Observations
+## Findings
 
 Title               Min         Max     Average     Standard
 
 (i) Read r-files
-Read                486         16      249.62      22.062
+Read                486         16      24.962      2.2062
 
 (ii) Read s-files
-Read                504         32      541.78      49.178
+Read                504         32      54.178      49.178
 
 (iii) Overwrite r-files
-Pure Write          812         20      285.1       26.11
-Overwrite           643         88      1106.17     99.217
+Pure Write          812         20      28.51       2.611
+Overwrite           643         88      110.617     9.9217
 
 (iv) Overwrite s-files
-Pure Write          718         55      747.08      68.408
-Overwrite           5518        1411    17215.1     1546.81
+Pure Write          718         55      74.708      6.8408
+Overwrite           5518        1411    1721.51     154.681
 
-(iv) Read r-files and s-files in various percentages.
-Read  (10%)         2989        19      577.68      52.968
-Read  (20%)         4030        17      589.75      53.975
-Read  (30%)         500         18      485.96      43.996
-Read  (40%)         3497        16      450.04      40.104
-Read  (50%)         448         16      383.9       33.59
-Read  (60%)         472         16      371.11      32.011
-Read  (70%)         455         16      328.49      27.849
-Read  (80%)         505         15      290.59      23.959
-Read  (90%)         500         16      261.13      21.113
+(v) Read r-files and s-files in various percentages.
+Read  (10%)         2989        19      57.768      5.2968
+Read  (20%)         4030        17      58.975      5.3975
+Read  (30%)         500         18      48.596      4.3996
+Read  (40%)         3497        16      45.004      4.0104
+Read  (50%)         448         16      38.39       3.359
+Read  (60%)         472         16      37.111      3.2011
+Read  (70%)         455         16      32.849      2.7849
+Read  (80%)         505         15      29.059      2.3959
+Read  (90%)         500         16      26.113      2.1113
 
 (vi) Overwrite r-files and s-files in various percentages.
-Overwrite (10%)     2391        93      14994.9     1334.39
-Overwrite (20%)     6141        90      13364.9     1173.19
-Overwrite (30%)     2730        90      12235.1     1056.51
-Overwrite (40%)     2233        91      10496       873.9
-Overwrite (50%)     5436        89      9037.03     736.503
-Overwrite (60%)     2742        89      7138.58     555.458
-Overwrite (70%)     2731        87      5814.43     434.343
-Overwrite (80%)     2370        88      4184.45     259.945
-Overwrite (90%)     2145        89      2606.4      109.84
+Overwrite (10%)     2391        93      1499.49     133.439
+Overwrite (20%)     6141        90      1336.49     117.319
+Overwrite (30%)     2730        90      1223.51     105.651
+Overwrite (40%)     2233        91      1049.6       87.39
+Overwrite (50%)     5436        89      903.703     73.6503
+Overwrite (60%)     2742        89      713.858     55.5458
+Overwrite (70%)     2731        87      581.443     43.4343
+Overwrite (80%)     2370        88      418.445     25.9945
+Overwrite (90%)     2145        89      260.64      10.984
 
 ## Observations
 
@@ -66,5 +66,53 @@ Overwrite (90%)     2145        89      2606.4      109.84
 5. In a hard disk (HDD), reads and writes are symmetric.
 6. The maximum time taken to read/write a file is sometimes arbitrarily large, this happens when the process is not scheduled immediately. (Therefore we cannot place any guarantees on the maximum time taken)
 7. As the percentage of r-files is increased in part (v) and part (vi), the average time taken for the operation reduces.
+8. The deviations for all readings are an order of magnitude low, this means that the read/write times are fairly same for all files.
+9. Read have uniform speed as indicated by small standard deviations.
 
 # USB Drives
+
+## Observations
+
+Title               Min         Max     Average     Standard
+
+(i) Read r-files
+Read                467         16      22.022      1.9422
+
+(ii) Read s-files
+Read                499         33      59.436      5.3936
+
+(iii) Overwrite r-files
+Overwrite           419         15      20.072      1.7672
+
+(iv) Overwrite s-files
+Overwrite           104249      1851    8030.63     525.263
+
+(v) Read r-files and s-files in various percentages.
+Read  (10%)         3127        17      54.013      4.8413
+Read  (20%)         422         16      50.44       4.514
+Read  (30%)         440         16      44.938      3.9938
+Read  (40%)         3252        16      47.765      4.2665
+Read  (50%)         440         15      37.502      3.2302
+Read  (60%)         460         15      34.251      2.9151
+Read  (70%)         490         16      32.643      2.7043
+Read  (80%)         451         15      26.89       2.159
+Read  (90%)         427         15      23.456      1.8256
+
+(vi) Overwrite r-files and s-files in various percentages.
+Overwrite (10%)     101482      1784    8492.2      275.82
+Overwrite (20%)     101739      1727    15260.8     1326.18
+Overwrite (30%)     100075      616     6787.84     496.184
+Overwrite (40%)     103917      1637    23432.5     1709.55
+Overwrite (50%)     103879      579     15861.4     1389.84
+Overwrite (60%)     103256      1096    7076.67     133.833
+Overwrite (70%)     102690      1205    6544.52     97.552
+Overwrite (80%)     17199       1292    2895.49     105.549
+Overwrite (90%)     63304       1353    2914.44     89.244
+
+## Observations
+
+- The read time for the flash drive is comparable to that of the HDD, which is counter-intuitive.
+- The write times for a flash drive is not symmetric to the read time, unlike HDDs.
+- Part (iv) shows erratic write times for the flash drive and no clear trend on varying the amount of r-files.
+- The standard deviation for overwrites in part (iv) are very high bolstering the above claim.
+- In part (v), again we see a similar trend as that of the HDD for the flash drive and read times decrease with increasing r-files.
