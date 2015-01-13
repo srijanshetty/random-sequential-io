@@ -40,8 +40,8 @@ fileList.forEach(function(value) {
     var byteAccess = helper.getRandomizedArray(fileLength);
 
     // Overwrite the bytes
-    for (i = 0; i < fileLength/2; ++i) {
-        buffer[i] = ~buffer[i];
+    for (var i = 0; i < fileLength/2; ++i) {
+        buffer[byteAccess[i]] = ~buffer[byteAccess[i]];
     }
 
     var t1 = microtime.now();
