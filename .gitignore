@@ -3,3 +3,4 @@ random/
 sequential/
 *.out
 results/
+tmp/
