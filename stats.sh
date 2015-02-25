@@ -13,7 +13,7 @@ OUTFILE="./results/${1}_${SUFFIX}"
 [ ! -d "./results" ] && mkdir results
 
 # Check if the outputfile exists or not
-node "$1" >> "$OUTFILE"
+sync && node "$1" >> "$OUTFILE"
 
 # Compute the maximum
 MAX=$(sort -nr "$OUTFILE" | head -1)
